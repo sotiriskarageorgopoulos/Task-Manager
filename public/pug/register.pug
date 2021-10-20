@@ -1,0 +1,24 @@
+doctype html 
+html 
+    include header 
+    link(rel="stylesheet" href="/public/css/register.css")
+    body.container-fluid 
+        include nav
+        article.row 
+            section.col-sm-4 
+            section.col-sm-4
+                form(method="POST")
+                    h2.register-heading REGISTER 
+                    label(for="name" class="label-form") Name 
+                    input(type="text" name="name" id="name" class="form-control mb-3" required) 
+                    label(for="email" class="label-form") Email 
+                    input(type="email" class="form-control mb-3" id="email" name="email" required)
+                    label(for="password" class="label-form") Password 
+                    input(type="password" name="password" id="password" class="form-control mb-3" required)
+                    label(for="tel" form="label-form") Tel 
+                    input(type="tel" id="tel" name="tel" class="form-control mb-3" required)
+                    a(href="/" class="form-link") Go to login page!
+                    .text-center 
+                        button.btn.btn-light.mt-3.mb-2.form-btn(type="submit") Submit
+            section.col-sm-4
+    include footer

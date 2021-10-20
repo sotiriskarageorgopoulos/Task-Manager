@@ -1,0 +1,7 @@
+@import url('./base.css');
+
+.register-heading {
+    color: var(--clr-white);
+    display: flex;
+    justify-content: center;
+}

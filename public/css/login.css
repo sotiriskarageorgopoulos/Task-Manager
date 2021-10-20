@@ -1,0 +1,33 @@
+@import url('./base.css');
+
+.github-heading,
+.login-heading {
+    color: var(--clr-white);
+    display: flex;
+    justify-content: center;
+}
+
+.github-heading {
+    font-size: var(--x-big-font-size);
+}
+
+.bi-github {
+    font-size: var(--xx-big-font-size);
+}
+
+.bi-github:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.github-link {
+    text-decoration: none;
+    color: unset;
+    background-color: unset;
+}
+
+.github-link:hover {
+    text-decoration: none;
+    color: unset;
+    background-color: unset;
+}

@@ -1,0 +1,105 @@
+:root {
+    /* dark shades of primary color*/
+
+    --clr-primary-1: hsl(284, 20%, 25%);
+    --clr-primary-2: hsl(284, 25%, 30%);
+    --clr-primary-3: hsl(284, 40%, 35%);
+    --clr-primary-4: hsl(284, 45%, 40%);
+
+    /* primary/main color */
+
+    --clr-primary-5: hsl(284, 50%, 60%);
+
+    /* lighter shades of primary color */
+
+    --clr-primary-6: hsl(284, 55%, 50%);
+    --clr-primary-7: hsl(284, 60%, 65%);
+    --clr-primary-8: hsl(284, 65%, 70%);
+    --clr-primary-9: hsl(284, 80%, 75%);
+    --clr-primary-10: hsl(284, 95%, 80%);
+
+    /* darkest grey for headings*/
+
+    --clr-grey-1: hsl(209, 61%, 16%);
+    --clr-grey-2: hsl(211, 39%, 23%);
+    --clr-grey-3: hsl(209, 34%, 30%);
+    --clr-grey-4: hsl(209, 28%, 39%);
+
+    /* grey used for paragraphs */
+
+    --clr-grey-5: hsl(210, 22%, 49%);
+    --clr-grey-6: hsl(209, 23%, 60%);
+    --clr-grey-7: hsl(211, 27%, 70%);
+    --clr-grey-8: hsl(210, 31%, 80%);
+    --clr-grey-9: hsl(212, 33%, 89%);
+    --clr-grey-10: hsl(210, 36%, 96%);
+    --clr-white: #fff;
+    --clr-gold: #c59d5f;
+    --clr-red-dark: hsl(360, 67%, 44%);
+    --clr-red-light: hsl(360, 71%, 66%);
+    --clr-green-dark: hsl(125, 67%, 44%);
+    --clr-green-light: hsl(125, 71%, 66%);
+    --clr-black: #222;
+    --transition: all 0.3s linear;
+    --spacing: 0.1rem;
+    --radius: 0.25rem;
+    --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    --small-font-size: 14px;
+    --medium-font-size: 18px;
+    --big-font-size: 30px;
+    --x-big-font-size: 40px;
+    --xx-big-font-size: 60px;
+}
+
+html {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+body {
+    background: linear-gradient(var(--clr-primary-5), var(--clr-primary-10));
+}
+
+.nav-heading {
+    color: var(--clr-white);
+    padding: 2%;
+    font-size: var(--xx-big-font-size);
+}
+
+form {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2%;
+    color: white;
+    background-color: var(--clr-primary-3);
+    border: thick double var(--clr-primary-1);
+    border-radius: var(--radius);
+}
+
+.form-link {
+    text-decoration: none;
+    color: var(--clr-white);
+}
+
+.form-link:hover {
+    opacity: 0.8;
+    color: var(--clr-white);
+}
+
+.form-btn {
+    color: var(--clr-primary-1);
+    width: 50%;
+}
+
+.form-btn:hover {
+    color: var(--clr-primary-1);
+    opacity: 0.8;
+}
+
+.footer-copyright {
+    font-size: var(--medium-font-size);
+    color: var(--clr-white);
+    text-align: center;
+}

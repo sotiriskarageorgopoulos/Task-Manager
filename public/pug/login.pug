@@ -1,0 +1,27 @@
+doctype html
+html 
+    include header
+    link(href="/public/css/login.css" rel="stylesheet")  
+    body.container-fluid 
+        include nav
+        article.row 
+            section.col-sm-3 
+            section.col-sm-6
+                form(method="POST" action='/login' class="mb-5")
+                    h2.login-heading LOGIN
+                    label(for="email" class="label-form") Email 
+                    input(type="email" name="email" class="form-control" id="email" required)
+                    label(for="password" class="label-form") Password 
+                    input(type="password" name="password" class="form-control" id="password" required) 
+                    a(href="/register" class="form-link") Go to register page!
+                    div.text-center.mt-3.mb-3
+                        button(type="submit" class="btn btn-light form-btn") Submit
+            section.col-sm-3
+        article.row 
+            section.col-sm-4 
+            section.col-sm-4
+                h2.github-heading Sign up with Github
+                a(href='/auth/github' class="github-link")
+                    i.d-flex.justify-content-center.bi.bi-github.mb-3
+            section.col-sm-4
+        include footer
