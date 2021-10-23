@@ -3,7 +3,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const routes = require('./routes/routes')
 const connectToDB = require('./db/connection')
-const {render404Page} = require('./controllers/functionality')
+const {
+    render404Page
+} = require('./controllers/functionality')
 const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
@@ -59,3 +61,5 @@ const start = async () => {
 }
 
 start()
+
+module.exports = app // FOR TESTING 

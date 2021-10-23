@@ -1,3 +1,9 @@
 doctype html 
 html 
-    p ERROR
+    include header 
+    link(href="/public/css/error404.css" rel="stylesheet")
+    body 
+        p.error-404-box
+            i.bi.bi-exclamation-circle
+            | ERROR 404: PAGE NOT FOUND 
+            a.btn.btn-light.go-to-main-link(href="/") Go to main page

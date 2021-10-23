@@ -1,0 +1,27 @@
+@import url('./base.css');
+
+.error-404-box {
+    display: flex;
+    flex-flow: column nowrap;
+    color: var(--clr-white);
+    background-color: var(--clr-primary-3);
+    font-size: var(--xx-big-font-size);
+    margin: 11% auto 18% auto;
+    box-shadow: 5px 10px;
+    width: 60%;
+    padding: 2%;
+    text-align: center;
+}
+
+.go-to-main-link {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--clr-primary-1);
+}
+
+.go-to-main-link:hover {
+    width: 50%;
+    opacity: 0.8;
+    color: var(--clr-primary-1);
+}

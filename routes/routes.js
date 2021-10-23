@@ -31,7 +31,7 @@ router.route('/auth/github')
     .get(passport.authenticate('github'))
 
 router.route('/main')
-    .get(ensureAuthenticated,renderMainPage)
+    .get(ensureAuthenticated, renderMainPage)
     .post(addTask)
     .delete(deleteTask)
 

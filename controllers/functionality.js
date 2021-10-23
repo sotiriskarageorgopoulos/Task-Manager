@@ -1,6 +1,5 @@
 const User = require('../models/User')
 const Task = require('../models/Task')
-const passport = require('passport')
 const bcrypt = require('bcrypt')
 const {
     v4: uuidv4

@@ -5,11 +5,11 @@ $(document).ready(function () {
         let data = {
             taskId: $(`input[name="${inputName}"]`).val()
         }
-        $("#task"+index).remove()
+        $("#task" + index).remove()
         $.ajax({
-                url: "http://localhost:8000/main",
-                type: "DELETE",
-                data: data
+            url: "http://localhost:8000/main",
+            type: "DELETE",
+            data: data
         })
     })
 })
