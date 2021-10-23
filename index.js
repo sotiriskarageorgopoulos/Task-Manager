@@ -6,8 +6,6 @@ const connectToDB = require('./db/connection')
 const {render404Page} = require('./controllers/functionality')
 const passport = require('passport')
 const session = require('express-session')
-const passportSocketIO = require('passport.socketio')
-const cookieParser = require('cookie-parser')
 const MongoStore = require('connect-mongo')
 const {
     serialize,
@@ -17,7 +15,6 @@ const {
 } = require('./controllers/auth')
 const app = express()
 const http = require('http').createServer(app)
-const io = require('socket.io')(http)
 const store = MongoStore.create({
     mongoUrl: process.env.MONGO_URI
 })
@@ -40,25 +37,6 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session({}))
-
-const onAuthorizeSuccess = (data,accept) => {
-    accept(null,true)
-}
-
-const onAuthorizeFail = (data,message,error,accept) => {
-    accept(null,false)
-}
-
-io.use(
-    passportSocketIO.authorize({
-        cookieParser,
-        key:"express.sid",
-        secret: process.env.SESSION_SECRET,
-        store: store,
-        success: onAuthorizeSuccess,
-        fail: onAuthorizeFail
-    })
-)
 
 serialize()
 deserialize()

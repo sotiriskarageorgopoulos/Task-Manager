@@ -2,7 +2,9 @@ const User = require('../models/User')
 const Task = require('../models/Task')
 const passport = require('passport')
 const bcrypt = require('bcrypt')
-const { v4: uuidv4 } = require('uuid');
+const {
+    v4: uuidv4
+} = require('uuid');
 const asyncWrapper = require('../middleware/asyncWrapper')
 
 const renderLoginPage = asyncWrapper(async (req, res) => {
@@ -16,12 +18,19 @@ const doLogOut = asyncWrapper(async (req, res) => {
 
 const renderMainPage = asyncWrapper(async (req, res) => {
     let userId = req.session.user_id
-    User
-    .findOne({id:userId})
-    .then(u => {
-        res.render(process.cwd() + '/public/pug/main.pug',{name: u.name})
-    })
-    .catch(err => err.status(500).json({message:"User does not exist!"}))
+    Task
+        .find({
+            userId: userId
+        })
+        .then(t => t)
+        .then(t => {
+            res.render(process.cwd() + '/public/pug/main.pug', {
+                tasks: t
+            })
+        })
+        .catch(err => err.status(500).json({
+            message: "User does not exist!"
+        }))
 })
 
 const doLogin = asyncWrapper(async (req, res) => {
@@ -47,7 +56,7 @@ const doGithubLogin = asyncWrapper(async (req, res) => {
 const doRegister = asyncWrapper(async (req, res) => {
     if (req.body !== null) {
         const salt = bcrypt.genSaltSync(10)
-        req.body.password = bcrypt.hashSync(req.body.password,salt)
+        req.body.password = bcrypt.hashSync(req.body.password, salt)
         req.body.id = uuidv4()
         const user = User(req.body)
         user
@@ -64,8 +73,47 @@ const doRegister = asyncWrapper(async (req, res) => {
     }
 })
 
-const ensureAuthenticated = () => {
-    //TODO: ΟΤΑΝ ΤΕΛΕΙΩΣΩ ME TO main.pug ΑΡΧΕΙΟ
+const addTask = asyncWrapper(async (req, res) => {
+    if (req.body !== null) {
+        let taskId = uuidv4()
+        let userId = req.session.user_id
+        req.body.userId = userId
+        req.body.taskId = taskId
+        const task = Task(req.body)
+        task
+            .save()
+            .then(t => res.status(201).redirect('/main'))
+            .catch(err => err.status(500).json({
+                added: false
+            }))
+    } else {
+        res.status(500).json({
+            added: false
+        })
+    }
+})
+
+const deleteTask = asyncWrapper(async (req, res) => {
+    let id = req.body.taskId
+    if (id) {
+        Task
+            .deleteOne({
+                taskId: id
+            })
+            .then(t => res.status(202))
+    } else {
+        res.status(500).json({
+            deleted: false
+        })
+    }
+})
+
+const ensureAuthenticated = (req, res, next) => {
+    if (req.session.user_id) {
+        return next()
+    } else {
+        res.redirect('/')
+    }
 }
 
 module.exports = {
@@ -76,5 +124,8 @@ module.exports = {
     doLogOut,
     doGithubLogin,
     render404Page,
-    doRegister
+    doRegister,
+    addTask,
+    deleteTask,
+    ensureAuthenticated
 }

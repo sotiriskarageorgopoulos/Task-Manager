@@ -8,7 +8,10 @@ const {
     doLogOut,
     renderRegister,
     doGithubLogin,
-    doRegister
+    doRegister,
+    addTask,
+    deleteTask,
+    ensureAuthenticated
 } = require('../controllers/functionality')
 
 router.route('/')
@@ -28,7 +31,9 @@ router.route('/auth/github')
     .get(passport.authenticate('github'))
 
 router.route('/main')
-    .get(renderMainPage)
+    .get(ensureAuthenticated,renderMainPage)
+    .post(addTask)
+    .delete(deleteTask)
 
 router.route('/logout')
     .get(doLogOut)

@@ -1,6 +1,30 @@
 doctype html 
 html 
     include header 
+    link(href="/public/css/main.css" rel="stylesheet")
     body 
-        h2 Hello #{name}!
-    include footer
+        include nav 
+        .container-fluid 
+            article.row
+                section.col-sm-6
+                    form(method="POST" action="/main")
+                        h2.task-heading Create a new Task
+                        label(for="job_title" class="label-form") Job Title 
+                        input(type="text" name="jobTitle" class="form-control mb-3" id="job_title" required)
+                        label(for="description" class="label-form") Description 
+                        textarea(name="description" id="description" class="form-control mb-3")
+                        .text-center 
+                            button(type="submit" class="btn btn-light form-btn") Submit
+                    .d-flex.justify-content-center.mb-5.mt-5
+                        a(href="/logout" class="logout-link") Logout
+                section.col-sm-6
+                    if tasks.length > 0
+                        ul.list-group 
+                            each t,i in tasks
+                                li.list-group-item(id="task"+i)
+                                    h2.task-title=t.jobTitle
+                                    p.task-desc=t.description
+                                    input(type="hidden" name="taskId"+i value=t.taskId)
+                                    button(type="submit" class="btn btn-danger" id="delete-btn" value=i) Delete
+        include footer
+        script(src="/public/js/main.js")

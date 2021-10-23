@@ -1,0 +1,44 @@
+@import url('./base.css');
+
+.task-heading {
+    color: var(--clr-white);
+    display: flex;
+    justify-content: center;
+}
+
+.logout-link {
+    color: var(--clr-primary-1);
+    text-decoration: unset;
+    background-color: var(--clr-white);
+    width: 50%;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    border-radius: var(--radius);
+}
+
+.logout-link:hover {
+    color: var(--clr-primary-1);
+    opacity: 0.8;
+}
+
+.task-desc,
+.task-title {
+    color: var(--clr-primary-1);
+}
+
+.task-title {
+    display: flex;
+    justify-content: center;
+}
+
+.unset-form-styles {
+    width: unset;
+    margin-left: unset;
+    margin-right: unset;
+    padding: unset;
+    color: unset;
+    background-color: unset;
+    border: unset;
+    border-radius: unset;
+}

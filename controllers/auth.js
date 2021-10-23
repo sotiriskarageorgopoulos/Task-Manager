@@ -53,11 +53,22 @@ const githubStrategy = new GithHubStrategy({
         password: '',
         tel: ''
     }
-    const user = User(profileObj)
-    user.save((err, doc) => {
-        if(err) return console.error(err)
-        cb(null, doc)
-    })
+    User.findOne({
+            id: profileObj.id
+        })
+        .then(u => {
+            if (!u) {
+                const user = User(profileObj)
+                user.save((err, doc) => {
+                    if (err) return console.error(err)
+                    cb(null, doc)
+                })
+            }
+            cb(null, u)
+        })
+        .catch(err => err.status(500).json({
+            message: "Error on authentication of user!"
+        }))
 })
 
 module.exports = {
