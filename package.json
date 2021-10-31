@@ -4,7 +4,7 @@
   "description": "Task manager web app",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "test": "mocha ./tests/ --ui tdd"
   },
   "author": "Sotiris Karageorgopoulos",
