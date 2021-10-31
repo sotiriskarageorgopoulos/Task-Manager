@@ -4,7 +4,7 @@
   "description": "Task manager web app",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "test": "mocha ./tests/ --ui tdd"
   },
   "author": "Sotiris Karageorgopoulos",
@@ -29,8 +29,5 @@
     "passport-local": "^1.0.0",
     "pug": "^3.0.2",
     "uuid": "^8.3.2"
-  },
-  "engines": {
-    "node": "14.x"
   }
 }
